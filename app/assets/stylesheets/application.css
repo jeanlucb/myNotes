@@ -11,6 +11,149 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require 'bootstrap-sass-official'
- */
+ *= require_self
+*/
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background: rgb(245, 239, 230);
+    font-family: "ProximaNova","Helvetica Neue",helvetica,arial,sans-serif;
+}
+
+
+/* Top bar */
+
+.top_bar {
+	padding: 5px;
+	margin: 0px;
+ 	background-color: #444444;
+	color: #FFFFFF;
+}
+
+.top_bar > h1 {
+	font-size: 120%;
+	margin: 10px;
+}
+.top_bar > h1 > small {
+	color: #bbbbbb;
+}
+
+
+/* Main navigation zone */
+
+.navbar {
+	margin: 20px 0px 0px 0px;
+}
+
+#navbar a {
+	color: #777777;
+	text-shadow: 1px 1px #fff;
+	padding-left: 0px;
+}
+
+#navbar a:hover,
+#navbar a:focus {
+	background: transparent;
+	color: #222222;
+}
+
+#navbar a > span {
+	color: #ffffff;
+	text-shadow: none;
+}
+
+.icon-bar {
+	background: #444444;
+}
+
+
+/* Workspace */
+
+#workspace {
+	background: white;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px;
+	border-radius: 3px;
+	min-height: 500px;
+}
+
+#workspace_header {
+	padding: 10px 25px 0px 15px;
+}
+
+#workspace_header_title h1 {
+	font-weight: bolder;
+}
+
+#workspace_header_summary {
+	color: #888888;
+	font-style: italic;
+}
+
+#workspace_header_infos {
+	background: transparent;
+	padding: 15px 0px 0px 15px;
+	border: 0px dotted #ccc;
+	font-size: smaller;
+	color: #aaaaaa;
+	text-align: right;
+}
+
+
+#workspace_menu {
+	font-size: smaller;
+	border-top: 1px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+	margin: 10px 10px 20px 15px;
+	padding: 5px 0px 5px 0px;
+}
+
+#workspace_menu_main {
+	padding-left: 0px;
+}
+
+#workspace_menu_context {
+	padding-right: 0px;
+}
+
+#workspace_menu a {
+	margin: 0px 10px 0px 0px;
+	text-decoration: underline;
+}
+
+#workspace_menu .menu_edit {
+	text-align: right;
+}
+
+#workspace_menu .menu_edit a {
+	text-decoration: underline;
+	font-weight: bolder;
+	margin: 0px 0px 0px 10px;
+}
+
+
+#workspace_content {
+	padding: 0px 25px 30px 15px;
+}
+
+#workspace_content h2 {
+
+}
+
+
+/*  Tools on the right of the workspace  */
+
+#workspace_tools {
+	font-size: smaller;
+	background: #fafafa;
+	border-radius: 3px;
+	padding: 15px;
+	border: 1px solid #dddddd;
+}
+
+/*  To-Do's  */
+
+.todo-warning {
+	color: 'warning';
+}

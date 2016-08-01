@@ -3,12 +3,118 @@
   <head>
     <title>MyNotes</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="top_bar" id="top_bar">
+      <h1>myNotes <small>with a summary, details, documents and to-do's</small></h1>
+    </div>
+
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#notes">Notes</a></li>
+            <li><a href="#docs">Docs & Files</a></li>
+            <li><a href="#todos">To-Do's <span class="badge progress-bar-danger">7</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container" id="workspace"> <!-- Workspace -->
+
+      <div class="row" id="workspace_header">
+        <div class="col-sm-8" id="workspace_title">
+          <h1>Title of the note</h1>
+          <p id="workspace_header_summary">More information and summary. Could be on more than one line, but must remain short and concise.</p>
+        </div>
+        <div class="col-sm-4" id="workspace_header_infos">
+          <p>
+            Created on Thu, 28 Jul, 2016 <br>
+            Last updated on Thu, 28 Jul, 2016, at 18:32<br>
+            <a href="#">See the history</a>
+          </p>
+          <p>
+            <a href="#">European Research Policy</a>,
+            <a href="#">Horizon 2020</a>,
+            <a href="#">Joint Programming</a>,
+            <a href="#">ERAC</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="row" id="workspace_menu">
+        <div class="col-sm-8" id="workspace_menu_main">
+          <a href="#">2 files</a>
+          <a href="#">4 to-do's</a> 
+          Add new: 
+          <a href="#">Document or file</a>
+          <a href="#">Task</a> 
+        </div>
+        <div class="col-sm-4 menu_edit" id="workspace_menu_context">
+          This note: 
+          <a href="#">Edit</a>
+          <a href="#">Copy</a> 
+          <a href="#">Delete</a>               
+        </div>
+      </div>
+
+      <div class="row" id="workspace_content">
+        <div class="col-sm-8">
+          <!-- <textarea rows="24"></textarea> -->
+          <p>This note has of course an introduction. It could be used to set the context and the main topic covered by the note, and especially its reationale. It may fix the former decision and the reason for the treatement, or just the context of the writings of the text.</p>
+          <h3>Introduction</h3>
+          <p>This note has of course an introduction. It could be used to set the context and the main topic covered by the note, and especially its reationale. It may fix the former decision and the reason for the treatement, or just the context of the writings of the text.</p>
+        </div>
+        <div class="col-sm-4" id="workspace_tools">
+
+          <h4>Documents and files</h4>
+          <dl>
+            <dt><a href="#">Document 1: Title</a></dt>
+            <dd style="margin-bottom: 10px;">This is a very short text summary of the document.</dd>
+            <dt><a href="#">Document 2: Title</a></dt>
+            <dd>This is a very short text summary of the document.</dd>
+          </dl>
+          <a href="#">Upload a new file</a>
+
+
+          <h4 style="margin-top: 30px;">To-Do's <span class="badge progress-bar-danger">2</span></h4>
+            <div class="checkbox">
+              <label class="text-danger">
+                <input type="checkbox" value="">
+                Option one is this and that&mdash;be sure to include why it's great <span class="label label-danger">Mon, Jul 25, at 12:00</span>
+              </label>
+              <label class="text-warning">
+                <input type="checkbox" value="">
+                Option one is this and that&mdash;be sure to include why it's great time to solve <span class="label label-warning">Today, at 18:00</span>
+              </label>
+              <label>
+                <input type="checkbox" value="">
+                Option one is this and that&mdash;be sure to include why it's great <span class="label label-primary">Tue, Aug 2, at 17:00</span>
+               </label>
+               <label>
+                <input type="checkbox" value="checked">
+                Option one is this and that&mdash;be sure to include why it's great <span class="label label-primary">Tue, Aug 2, at 17:00</span>
+               </label>
+             </div>
+            <a href="#">Add a new task</a> 
+
+        </div>
+      </div>
+
+    </div> <!-- /.workspace -->
+
   </body>
 </html>
