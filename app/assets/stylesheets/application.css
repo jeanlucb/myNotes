@@ -96,6 +96,21 @@ body {
 }
 
 
+/* Login forms: Devise */
+
+.form-control {
+	size: 40;
+}
+
+#workspace_login {
+	background: white;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px;
+	border-radius: 3px;
+	max-width: 500px;
+	min-height: 0px;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+}
 
 
 /* Workspace */
