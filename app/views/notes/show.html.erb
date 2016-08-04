@@ -1,0 +1,81 @@
+<div class="row" id="workspace_header">
+	<div class="col-sm-8" id="workspace_title">
+		<h1><%= @note.title %></h1>
+	  <p id="workspace_header_summary"><%= @note.summary %></p>
+	</div>
+	<div class="col-sm-4" id="workspace_header_infos">
+	  <p>
+	    Created on <%= @note.created_at %><br>
+	    Last updated on <%= @note.updated_at %><br>
+	    <a href="#">See the history</a>
+	  </p>
+	  <p>
+	    <a href="#">Tag</a>,
+	    <a href="#">Tag</a>
+	  </p>
+	</div>
+</div>
+
+
+
+<div class="row" id="workspace_menu">
+	<div class="col-sm-8" id="workspace_menu_main">
+	  <a href="#">2 files</a>
+	  <a href="#">4 to-do's</a> 
+	  Add new: 
+	  <a href="#">Document or file</a>
+	  <a href="#">Task</a> 
+	</div>
+	<div class="col-sm-4 menu_edit" id="workspace_menu_context">
+	  This note: 
+	  <%= link_to 'Edit', edit_note_path(@note) %>
+	  <a href="#">Copy</a> 
+	  <%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %>               
+	</div>
+</div>
+
+
+
+
+<div class="row" id="workspace_content">
+<div class="col-sm-8">
+  <!-- <textarea rows="24"></textarea> -->
+  <%= sanitize @note.text,
+  		tags: %w(h2 h3 h4 h5 p br ul ol li strong em u a hr blockquote img),
+  		attributes: %w(href src alt) %>
+</div>
+<div class="col-sm-4" id="workspace_tools">
+
+  <h4>Documents and files</h4>
+  <dl>
+    <dt><a href="#">Document 1: Title</a></dt>
+    <dd style="margin-bottom: 10px;">This is a very short text summary of the document.</dd>
+    <dt><a href="#">Document 2: Title</a></dt>
+    <dd>This is a very short text summary of the document.</dd>
+  </dl>
+  <a href="#">Upload a new file</a>
+
+
+  <h4 style="margin-top: 30px;">To-Do's <span class="badge progress-bar-danger">2</span></h4>
+    <div class="checkbox">
+      <label class="text-danger">
+        <input type="checkbox" value="">
+        Option one is this and that&mdash;be sure to include why it's great <span class="label label-danger">Mon, Jul 25, at 12:00</span>
+      </label>
+      <label class="text-warning">
+        <input type="checkbox" value="">
+        Option one is this and that&mdash;be sure to include why it's great time to solve <span class="label label-warning">Today, at 18:00</span>
+      </label>
+      <label>
+        <input type="checkbox" value="">
+        Option one is this and that&mdash;be sure to include why it's great <span class="label label-primary">Tue, Aug 2, at 17:00</span>
+       </label>
+       <label>
+        <input type="checkbox" value="checked">
+        Option one is this and that&mdash;be sure to include why it's great <span class="label label-primary">Tue, Aug 2, at 17:00</span>
+       </label>
+     </div>
+    <a href="#">Add a new task</a> 
+
+</div>
+</div>

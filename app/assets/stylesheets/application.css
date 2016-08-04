@@ -98,10 +98,6 @@ body {
 
 /* Login forms: Devise */
 
-.form-control {
-	size: 40;
-}
-
 #workspace_login {
 	background: white;
 	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px;
@@ -132,7 +128,13 @@ body {
 	font-weight: bolder;
 }
 
-#workspace_header_summary {
+#note_title {
+	font-weight: bold;
+	font-size: large;
+}
+
+#workspace_header_summary,
+#note_summary {
 	color: #888888;
 	font-style: italic;
 }
@@ -184,8 +186,9 @@ body {
 }
 
 #workspace_content h2 {
-
+	font-size: 140%;
 }
+
 
 
 /*  Tools on the right of the workspace  */
