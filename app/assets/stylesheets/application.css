@@ -25,19 +25,30 @@ body {
 
 /* Top bar */
 
-.top_bar {
-	padding: 5px;
-	margin: 0px;
- 	background-color: #444444;
-	color: #FFFFFF;
+#top_bar {
+	background: #444444;
+	color: #ffffff;
+	position: relative;
 }
 
-.top_bar > h1 {
+#top_bar_logo {
+}
+
+#top_bar_logo > h1,
+#top_bar_login > h1 {
+	color: #FFFFFF;
 	font-size: 120%;
 	margin: 10px;
 }
-.top_bar > h1 > small {
+
+#top_bar_logo > h1 > small,
+#top_bar_login > h1 > small {
 	color: #bbbbbb;
+}
+
+#top_bar_login a {
+	color: #ffffff;
+	text-decoration: underline;
 }
 
 
@@ -68,6 +79,24 @@ body {
 	background: #444444;
 }
 
+/* Rails classes */
+
+#error_explanation {
+	background: #f2dede;
+	padding: 5px 20px 5px 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #a94442;
+}
+
+#error_explanation h2 {
+	font-size: 120%;
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+
+
 
 /* Workspace */
 
@@ -76,6 +105,8 @@ body {
 	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px;
 	border-radius: 3px;
 	min-height: 500px;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 #workspace_header {
