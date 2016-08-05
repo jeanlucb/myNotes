@@ -4,7 +4,11 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    if params[:tag]
+      @notes = Note.tagged_with(params[:tag])
+    else
+      @notes = Note.all
+    end
   end
 
   # GET /notes/1
@@ -70,6 +74,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title, :summary, :text, :user_id)
+      params.require(:note).permit(:title, :summary, :text, :user_id, :tag_list)
     end
 end

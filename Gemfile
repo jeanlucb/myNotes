@@ -47,3 +47,5 @@ gem 'devise'
 gem 'bower-rails'
 gem 'rails_12factor'
 gem 'tinymce-rails'
+gem 'acts-as-taggable-on'
+
