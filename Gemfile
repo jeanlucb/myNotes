@@ -48,4 +48,7 @@ gem 'bower-rails'
 gem 'rails_12factor'
 gem 'tinymce-rails'
 gem 'acts-as-taggable-on'
+gem 'faker'
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+gem 'bootstrap-kaminari-views'
 

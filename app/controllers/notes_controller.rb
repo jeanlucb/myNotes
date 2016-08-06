@@ -9,6 +9,7 @@ class NotesController < ApplicationController
     else
       @notes = Note.all
     end
+    @notes = @notes.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   # GET /notes/1
