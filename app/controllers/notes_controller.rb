@@ -4,12 +4,12 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
+    @notes = current_user.notes
     if params[:tag]
-      @notes = Note.tagged_with(params[:tag])
-    else
-      @notes = Note.all
+      @tag = params[:tag]
+      @notes = @notes.tagged_with(params[:tag])
     end
-    @notes = @notes.order(created_at: :desc).page(params[:page]).per(5)
+    @notes = @notes.order(updated_at: :desc).page(params[:page]).per(5)
   end
 
   # GET /notes/1

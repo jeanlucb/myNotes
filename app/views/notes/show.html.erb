@@ -5,8 +5,8 @@
 	</div>
 	<div class="col-sm-4" id="workspace_header_infos">
 	  <p>
-	    Created on <%= @note.created_at %><br>
-	    Last updated on <%= @note.updated_at %><br>
+	    Created on <%= @note.created_at.localtime.strftime("%A, %b %d, %Y at %H:%M") %><br>
+	    Last updated on <%= @note.updated_at.localtime.strftime("%A, %b %d, %Y at %H:%M") %><br>
 	    <a href="#">See the history</a>
 	  </p>
 	  <p>
@@ -36,14 +36,13 @@
 
 
 
-<div class="row" id="workspace_content">
-<div class="col-sm-8">
-  <!-- <textarea rows="24"></textarea> -->
-  <%= sanitize @note.text,
-  		tags: %w(h2 h3 h4 h5 p br ul ol li strong em u a hr blockquote img),
-  		attributes: %w(href src alt) %>
-</div>
-<div class="col-sm-4" id="workspace_tools">
+  <div class="row" id="workspace_content">
+    <div class="col-sm-8" class="note_text">
+      <%= sanitize @note.text,
+      		tags: %w(h2 h3 h4 h5 p br ul ol li strong em u a hr blockquote img),
+      		attributes: %w(href src alt) %>
+    </div>
+  <div class="col-sm-4" id="workspace_tools">
 
   <h4>Documents and files</h4>
   <dl>
