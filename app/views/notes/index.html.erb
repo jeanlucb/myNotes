@@ -1,4 +1,4 @@
-<h1></h1>
+<h1>Notes</h1>
 
 <% if @tag %>
     <p>Tag: <strong><%= @tag %></strong></p>
@@ -8,6 +8,7 @@
     :pagination_class => "pagination pagination-sm" %>
 
 <% @notes.each do |note| %>
+
         <div class="row" style="margin-left: 15px;">
             <%= link_to note do %>
             <div class="col-sm-8 note">
@@ -16,17 +17,23 @@
             </div>
             <% end %>
             <div class="col-sm-4">
-                <p class="note_infos text-right">
-                    Created on <%= note.created_at.localtime.strftime("%A, %b %d, %Y at %H:%M") %><br>
-                    Last updated on <%= note.updated_at.localtime.strftime("%A, %b %d, %Y at %H:%M") %><br>
-                </p>
+                <% if note.has_open_to_dos? %>
+                    <h4 class="todos_title">To Do's</h4>
+                    <%= render 'to_dos/todo_list', tasks: note.to_dos.order(:achieved, deadline: :asc) %>
+                <% end %>
             </div>
         </div>
 
-        <div class="row" style="margin: 0px 15px 25px 10px;">
-            <div class="col-sm-8">
+        <div class="row" style="margin-left: 15px; margin-bottom: 40px;">
+            <div class="col-sm-4">
                 <p>Tags:
         <%= sanitize note.tag_list.map { |t| link_to t, tag_path(t) }.join(', '), tags: %w(a), attributes: %w(href ) %>
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p class="note_infos text-right">
+                    Created on <%= note.created_at.localtime.strftime("%a, %b %d, %Y at %H:%M") %><br>
+                    Last updated on <%= note.updated_at.localtime.strftime("%a, %b %d, %Y at %H:%M") %><br>
                 </p>
             </div>
             <div class="col-sm-4 text-right">

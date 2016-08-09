@@ -17,3 +17,18 @@ Note.destroy_all
 		created_at: Faker::Time.between(DateTime.now - 100, DateTime.now)
 		)
 end
+
+ToDo.destroy_all
+80.times do |td|
+	note_id = Note.all.sample.id
+	ToDo.create!(
+		title: Faker::Book.title,
+		text: Faker::Lorem.paragraph(random_sentences_to_add=2),
+		user: User.first,
+		tag_list: Faker::Hipster.words(4, true, true),
+		achieved: Faker::Boolean.boolean(0.5),
+		created_at: Faker::Time.between(DateTime.now - 100, DateTime.now),
+		deadline: Faker::Time.between(DateTime.now - 80, DateTime.now + 20),
+		note_id: note_id
+		)
+end

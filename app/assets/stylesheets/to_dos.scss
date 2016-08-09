@@ -1,0 +1,51 @@
+// Place all the styles related to the ToDos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*  To-Do's  */
+
+.todo-warning {
+	color: 'warning';
+}
+
+.todos_title {
+	margin-top: 0px;
+	font-size: 120%;
+	color: #330000;	
+}
+
+.todos_list {
+	margin-left: 0px;
+	padding-left: 20px;
+}
+
+.todos_list li {
+	margin-bottom: 3px;
+	font-size: smaller;
+}
+
+.todo_list li > span {
+}
+
+span.label-muted {
+	background: #bbbbbb;
+}
+
+span.progress-bar-primary {
+	background: #337ab7;
+}
+
+div.todo {
+	color: #333333;
+	border: 1px solid #cccccc;
+	padding: 10px;
+	background: #fafafa;
+	margin-bottom: 20px;
+	border-radius: 3px;
+}
+
+h2.todo {
+	font-size: 140%;
+	margin-top: 0px;
+}

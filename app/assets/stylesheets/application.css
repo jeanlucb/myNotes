@@ -190,40 +190,6 @@ body {
 }
 
 
-/* Notes */
-
-.note {
-	color: #333333;
-	border: 1px solid #cccccc;
-	padding: 10px;
-	background: #fafafa;
-	margin-bottom: 10px;
-	border-radius: 3px;
-}
-
-.note p,
-.note h2 {
-	color: #333333;
-}
-
-.note h2 {
-	margin-top: 5px;
-	font-size: 130%;
-}
-
-.note a {
-	text-decoration: none;
-}
-div.note:hover,
-div.note:focus {
-	background: #eeeeee;
-}
-
-p.note_infos {
-	font-size: smaller;
-	color: #aaaaaa;
-}
-
 
 /*  Tools on the right of the workspace  */
 
@@ -235,8 +201,14 @@ p.note_infos {
 	border: 1px solid #dddddd;
 }
 
-/*  To-Do's  */
 
-.todo-warning {
-	color: 'warning';
+/* Tiny MCE styles */
+
+body.mce-content-body {
+	padding: 10px;
+    font-size: 18px;
+    color: #555555;
+    font-family: "Georgia", serif;
+    background: #ffffff;
 }
+

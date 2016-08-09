@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805045346) do
+ActiveRecord::Schema.define(version: 20160808091413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,21 @@ ActiveRecord::Schema.define(version: 20160805045346) do
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
+  create_table "to_dos", force: :cascade do |t|
+    t.string   "title"
+    t.text     "text"
+    t.string   "status"
+    t.datetime "deadline"
+    t.boolean  "displayed",  default: true
+    t.boolean  "achieved",   default: false
+    t.integer  "user_id"
+    t.integer  "note_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["note_id"], name: "index_to_dos_on_note_id", using: :btree
+    t.index ["user_id"], name: "index_to_dos_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -68,4 +83,6 @@ ActiveRecord::Schema.define(version: 20160805045346) do
   end
 
   add_foreign_key "notes", "users"
+  add_foreign_key "to_dos", "notes"
+  add_foreign_key "to_dos", "users"
 end

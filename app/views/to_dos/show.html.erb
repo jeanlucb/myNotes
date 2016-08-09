@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @to_do.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @to_do.text %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @to_do.status %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @to_do.deadline %>
+</p>
+
+<p>
+  <strong>Displayed:</strong>
+  <%= @to_do.displayed %>
+</p>
+
+<p>
+  <strong>Achieved:</strong>
+  <%= @to_do.achieved %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @to_do.user %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @to_do.note %>
+</p>
+
+<%= link_to 'Edit', edit_to_do_path(@to_do) %> |
+<%= link_to 'Back', to_dos_path %>

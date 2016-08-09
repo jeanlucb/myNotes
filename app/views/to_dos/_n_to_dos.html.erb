@@ -1,0 +1,3 @@
+<%= if note.has_to_dos?
+		link_to pluralize(note.to_dos.length, "To-Do", plural: "To-Do's"), "#"
+end %>

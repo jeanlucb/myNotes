@@ -10,6 +10,8 @@
   <ul class="nav navbar-nav">
     <li><a href="/notes">Notes</a></li>
     <li><a href="#docs">Docs & Files</a></li>
-    <li><a href="#todos">To-Do's <span class="badge progress-bar-danger">7</span></a></li>
+    <% label = todo_label ToDo.all %>
+    <li><a href="/to_dos">To-Do's <span class="badge progress-bar-<%= label[:label]-%>">
+      <%= label [:number] -%></span></a></li>
   </ul>
 </div><!--/.nav-collapse -->

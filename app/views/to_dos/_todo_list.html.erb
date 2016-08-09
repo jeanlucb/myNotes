@@ -1,0 +1,8 @@
+<ul class="todos_list">
+	<% tasks.each do |task| %>
+	    <li class="text-<%= task.label  -%>">
+	        <%= task.title %>
+	        <span class="label label-<%= task.label  -%>"><%= task.deadline.localtime.strftime("%a, %b %d, %Y at %H:%M") %></span>
+	    </li>
+	<% end %>
+</ul>

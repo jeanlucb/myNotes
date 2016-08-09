@@ -29,7 +29,7 @@
   <div class="form-group">
     <%= f.label :text %>
     <%= f.text_area :text, :class => "tinymce", :rows => 24 %>
-    <%= tinymce %>
+    <%= tinymce :content_css => asset_path('application.css') %>
   </div>
 
   <div class="actions">
