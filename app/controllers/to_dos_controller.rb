@@ -21,6 +21,11 @@ class ToDosController < ApplicationController
   # GET /to_dos/new
   def new
     @to_do = ToDo.new
+    if params[:note_id]
+      @note = Note.find(params[:note_id])
+      @to_do.note = @note
+      @to_do.tag_list = @note.tag_list
+    end
   end
 
   # GET /to_dos/1/edit
@@ -32,6 +37,10 @@ class ToDosController < ApplicationController
   def create
     @to_do = ToDo.new(to_do_params)
     @to_do.user = current_user
+    if params[:note_id]
+      @note = Note.find(params[:note_id])
+      @to_do.note = @note
+    end
 
     respond_to do |format|
       if @to_do.save

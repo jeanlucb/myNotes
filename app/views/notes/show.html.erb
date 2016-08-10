@@ -61,7 +61,6 @@
 	    </h4>
 	    <%= render 'to_dos/todo_list', tasks: @note.to_dos.order(:achieved, deadline: :asc) %>
 	  <% end %>
-	  <a href="#">Add a new task</a> 
-
+	  <%= link_to 'Add a new task', new_to_do_path(note_id: @note.id) %>
 	</div>
 </div>

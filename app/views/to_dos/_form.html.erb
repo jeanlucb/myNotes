@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <% if @to_do.note %>
+    <%= hidden_field_tag :note_id, @to_do.note_id %>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
