@@ -1,17 +1,39 @@
-<div class="row">
-	<div class="col-sm-8 todo">
-	  <h2 class="todo text-<%= to_do.label -%>"><%= to_do.title %></h2>
-	  <p><%= to_do.text %></p>
-	  <%= link_to 'Show', to_do %>
-	  <%= link_to 'Edit', edit_to_do_path(to_do) %>
-	  <%= link_to 'Destroy', to_do, method: :delete, data: { confirm: 'Are you sure?' } %>
-	</div>
-	<div class="col-sm-4">
-		<p>Deadline:
-	  	<small class="label label-<%= to_do.label  -%>"><%= to_do.deadline.localtime.strftime("%a, %b %d, %Y at %H:%M") %></small>
-	  </p>
-	  <p>Tags:
-	    <%= sanitize to_do.tag_list.map { |t| link_to t, tag_path(t) }.join(', '), tags: %w(a), attributes: %w(href ) %>
-	  </p>
+<div class="row" style="margin-bottom: 40px;">
+	<div class="col-sm-8">
+
+		<div class="container-fluid">     
+		
+			<div class="row">
+				<div class="col-sm-12 todo">
+					<h2 class="todo text-<%= to_do.label -%>"><%= to_do.title %></h2>
+					<p><%= to_do.text %></p>
+					<p><small class="label label-<%= to_do.label  -%>"><%= to_do.deadline.localtime.strftime("%a, %b %d, %Y at %H:%M") %></small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4">
+					<%= link_to 'Edit', edit_to_do_path(to_do),
+					class: "btn btn-primary btn-sm" %>
+					<%= link_to 'Delete', to_do, method: :delete,
+					class: "btn btn-danger btn-sm",
+					data: { confirm: 'Are you sure?' } %>
+				</div>
+				<div class="col-sm-4">
+					<p>Tags:
+					<%= sanitize to_do.tag_list.map { |t| link_to t, tag_path(t) }.join(', '), tags: %w(a), attributes: %w(href ) %>
+					</p>
+				</div>
+				<div class="col-sm-4 text-right">
+					<p class="note_infos text-right">
+					Created on <%= to_do.created_at.localtime.strftime("%a, %b %d, %Y at %H:%M") %><br>
+					Last updated on <%= to_do.updated_at.localtime.strftime("%a, %b %d, %Y at %H:%M") %><br>
+					</p>
+				</div> 
+			</div>
+		
+		</div>
+
 	</div>
 </div>

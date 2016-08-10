@@ -7,9 +7,11 @@
 <%= paginate @notes, :theme => 'twitter-bootstrap-3',
     :pagination_class => "pagination pagination-sm" %>
 
-<% @notes.each do |note| %>
-    <%= render 'note_summary', note: note %>
-<% end %>
+<div class="container-fluid">
+	<% @notes.each do |note| %>
+	    <%= render 'note_summary', note: note %>
+	<% end %>
+</div>
 
 <%= paginate @notes, :theme => 'twitter-bootstrap-3',
 :pagination_class => "pagination pagination-sm" %>
