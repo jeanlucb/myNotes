@@ -26,9 +26,16 @@ body {
 /* Top bar */
 
 #top_bar {
-	background: #444444;
 	color: #ffffff;
 	position: relative;
+}
+
+#top_bar.production {
+	background: #444444;
+}
+
+#top_bar.development {
+	background: #880000;
 }
 
 #top_bar_logo {
