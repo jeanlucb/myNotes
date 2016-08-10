@@ -8,6 +8,7 @@ class ToDo < ApplicationRecord
     return not(self.achieved)
   end
 
+
   def label
     if self.achieved
       return "muted"
@@ -23,5 +24,15 @@ class ToDo < ApplicationRecord
       end
     end
   end
+
+
+  def independent?
+    if self.note_id.nil?
+      return true
+    else
+      return false
+    end
+  end
+
 
 end

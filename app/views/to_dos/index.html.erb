@@ -3,28 +3,7 @@
 <div class="container">
 
 	<% @open_to_dos.each do |to_do| %>
-
-	<div class="row">
-
-		<div class="col-sm-8 todo">
-		  <h2 class="todo text-<%= to_do.label -%>"><%= to_do.title %></h2>
-		  <p><%= to_do.text %></p>
-		 
-		  
-		  
-		  <%= link_to 'Show', to_do %>
-		  <%= link_to 'Edit', edit_to_do_path(to_do) %>
-		  <%= link_to 'Destroy', to_do, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</div>
-		<div class="col-sm-4">
-			<p>Deadline:
-	    	<small class="label label-<%= to_do.label  -%>"><%= to_do.deadline.localtime.strftime("%a, %b %d, %Y at %H:%M") %></small>
-		  </p>
-		  <p>Tags:
-	      <%= sanitize to_do.tag_list.map { |t| link_to t, tag_path(t) }.join(', '), tags: %w(a), attributes: %w(href ) %>
-	    </p>
-		</div>
-		</div>
+		<%= render 'to_do_summary', to_do: to_do %>
 	<% end %>
 
 

@@ -53,8 +53,12 @@
 	  <br>
 	  <% if @note.has_to_dos? %>
 	    <% label =  todo_label @note.to_dos %>
-	    <h4 style="margin-top: 30px;">To-Do's <span class="badge progress-bar-<%= label[:label]-%>">
-	      <%= label [:number] -%></span></h4>
+	    <h4 style="margin-top: 30px;">To-Do's
+	    <% if label[:number] != 0 %>
+	    	<span class="badge progress-bar-<%= label[:label]-%>">
+	      <%= label[:number] -%></span>
+	    <% end %>
+	    </h4>
 	    <%= render 'to_dos/todo_list', tasks: @note.to_dos.order(:achieved, deadline: :asc) %>
 	  <% end %>
 	  <a href="#">Add a new task</a> 

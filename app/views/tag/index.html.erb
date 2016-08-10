@@ -1,0 +1,23 @@
+<h1></h1>
+<% if @tag %>
+    <p>Tag: <strong><%= @tag %></strong></p>
+<% end %>
+
+<div class="container">
+
+	<% if @notes.length != 0 %>
+			<% @notes.each do |note| %>
+					<%= render 'notes/note_summary', note: note %>
+			<% end %>
+	<% end %>
+
+	<% if has_independent_tasks? @to_dos %>
+		<% @to_dos.each do |to_do| %>
+				<% if to_do.independent? %>
+					<%= render 'to_dos/to_do_summary', to_do: to_do %>
+				<% end %>
+		<% end %>
+	<% end %>
+
+</div>
+
