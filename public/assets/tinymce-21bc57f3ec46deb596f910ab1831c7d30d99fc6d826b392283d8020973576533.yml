@@ -1,0 +1,16 @@
+menubar: false
+toolbar:
+  styleselect |
+  bold italic forecolor backcolor |
+  bullist numlist outdent indent blockquote  |
+  table | image link hr insertdatetime |
+  fullscreen
+statusbar: false
+plugins:
+  - image
+  - link
+  - fullscreen
+  - table
+  - insertdatetime
+  - hr
+  - textcolor
