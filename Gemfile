@@ -51,4 +51,6 @@ gem 'acts-as-taggable-on'
 gem 'faker'
 gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 gem 'bootstrap-kaminari-views'
+gem 'rmagick'
+gem 'carrierwave'
 

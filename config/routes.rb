@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :documents
   resources :to_dos
   get 'tags/', to: 'dashboard#index'
   get 'tags/:tag', to: 'tag#index', as: :tag

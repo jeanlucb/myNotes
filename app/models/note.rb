@@ -1,6 +1,7 @@
 class Note < ApplicationRecord
   belongs_to :user
   has_many :to_dos, dependent: :destroy
+  has_many :documents
   acts_as_taggable
 
   def has_to_dos?
