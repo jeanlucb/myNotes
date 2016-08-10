@@ -1,28 +1,30 @@
 
-<p>
-  <strong>Title:</strong>
-  <%= @document.title %>
-</p>
+<h1 class="document"><%= @document.title %></h1>
 
-<p>
-  <strong>Author:</strong>
-  <%= @document.author %>
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= link_to @document.file_url do %>
+        <%= image_tag @document.file_url(:cover), class: "cover" if @document.file? %>
+      <% end %>
+    </div>
+    <div class="col-sm-6">
+      <p>
+        <strong>Summary:</strong>
+        <%= @document.summary %>
+      </p>
+      <p>
+        <strong>Author:</strong>
+        <%= @document.author %>
+      </p>
+      <p>
+        <strong>Note:</strong>
+        <%= @document.note %>
+      </p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @document.summary %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @document.user %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @document.note %>
-</p>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
