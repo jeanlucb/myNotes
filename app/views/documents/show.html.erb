@@ -21,6 +21,9 @@
         <strong>Note:</strong>
         <%= @document.note %>
       </p>
+      <p>Tags:
+          <%= sanitize @document.tag_list.map { |t| link_to t, tag_path(t) }.join(', '), tags: %w(a), attributes: %w(href ) %>
+      </p>
     </div>
   </div>
 </div>
