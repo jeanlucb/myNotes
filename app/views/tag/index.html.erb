@@ -12,12 +12,10 @@
 			<% end %>
 	<% end %>
 
-	<% if has_independent_tasks? @to_dos %>
-		<h2 class="tag">Independent tasks</h2>
+	<% if @to_dos %>
+		<h2 class="tag">Tasks</h2>
 		<% @to_dos.each do |to_do| %>
-				<% if to_do.independent? %>
-					<%= render 'to_dos/to_do_summary', to_do: to_do %>
-				<% end %>
+			<%= render 'to_dos/to_do_summary', to_do: to_do %>
 		<% end %>
 	<% end %>
 

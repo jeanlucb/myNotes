@@ -36,22 +36,4 @@ module ToDosHelper
 
   end
 
-	def has_independent_tasks? (list)
-		if list.nil?
-			return false
-		end
-		has_independent_task = false
-		list.each do |t|
-			if not(t.note_id)
-				has_independent_task = true
-			end
-		end
-		return has_independent_task
-	end
-
-	def independent_tasks (list)
-		return list.select {|t| t.note_id.nil? }
-	end
-
-
 end
