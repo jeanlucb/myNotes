@@ -7,7 +7,6 @@ class TagController < ApplicationController
 	    @notes = current_user.notes.tagged_with(@tag).order(updated_at: :desc)
 	    # Finds open to-do's tagged with :tag, but not linked to notes in @notes
 	    @to_dos = independent_open_to_dos(@notes, current_user.to_dos.tagged_with(@tag))
-	    
 	  else
 	  	render 'dashboard#index'
 	  end

@@ -12,7 +12,7 @@
 			<% end %>
 	<% end %>
 
-	<% if @to_dos %>
+	<% if @to_dos.length != 0 %>
 		<h2 class="tag">Tasks</h2>
 		<% @to_dos.each do |to_do| %>
 			<%= render 'to_dos/to_do_summary', to_do: to_do %>
