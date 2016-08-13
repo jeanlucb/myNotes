@@ -15,6 +15,11 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   def new
     @document = Document.new
+    if params[:note_id]
+      @note = Note.find(params[:note_id])
+      @document.note = @note
+      @document.tag_list = @note.tag_list
+    end
   end
 
   # GET /documents/1/edit
@@ -26,6 +31,11 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     @document.user = current_user
+
+    if params[:note_id]
+      @note = Note.find(params[:note_id])
+      @document.note = @note
+    end
 
     respond_to do |format|
       if @document.save

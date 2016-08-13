@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <% if @document.note %>
+    <%= hidden_field_tag :note_id, @document.note_id %>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>

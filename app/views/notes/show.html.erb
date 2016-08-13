@@ -68,7 +68,7 @@
 		    <% end %>
 			</ul>
 	  <% end %>
-	  <a href="#">Upload a new file</a>
+	  <%= link_to 'Upload a new document or a new file', new_document_path(note_id: @note.id) %>
 
 	  <br>
 	  <% if @note.has_to_dos? %>
