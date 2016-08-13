@@ -40,14 +40,34 @@
     		attributes: %w(href src alt) %>
   </div>
   <div class="col-sm-4" id="workspace_tools">
+  	<% if @note.documents.length != 0 %>
 
-	  <h4>Documents and files</h4>
-	  <dl>
-	    <dt><a href="#">Document 1: Title</a></dt>
-	    <dd style="margin-bottom: 10px;">This is a very short text summary of the document.</dd>
-	    <dt><a href="#">Document 2: Title</a></dt>
-	    <dd>This is a very short text summary of the document.</dd>
-	  </dl>
+
+
+	  	<h4>Documents and files</h4>
+			<ul class="media-list">
+		  	<% @note.documents.each do |document| %>
+				  <li class="media">
+				    <div class="media-left">
+				      <a href="#">
+				      <%= image_tag document.file_url(:small_thumb),
+				      				class: "media-object thumb" if document.file? %>
+				      </a>
+				    </div>
+				    <div class="media-body">
+				      <h4 class="media-heading"><%= link_to document.title, document -%></h4>
+				      <p class="document-list">
+				      	<%= truncate document.summary, length: 120, separator: ' ' -%>
+    					</p>
+    					<p class="document-list">
+		    				<%= link_to 'Download', document.file_url %>
+    						(<%= number_to_human_size document.file.size -%>)
+    					</p>
+				    </div>
+				  </li>
+		    <% end %>
+			</ul>
+	  <% end %>
 	  <a href="#">Upload a new file</a>
 
 	  <br>

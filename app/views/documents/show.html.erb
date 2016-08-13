@@ -1,33 +1,60 @@
+<div class="row" id="workspace_header">
+  <div class="col-sm-8" id="workspace_title">
+    <h1><%= @document.title %></h1>
+    <p id="workspace_header_summary"><%= @document.summary %></p>
+  </div>
+  <div class="col-sm-4" id="workspace_header_infos">
+    <p>
+      Created on <%= @document.created_at.localtime.strftime("%A, %b %d, %Y at %H:%M") %><br>
+      Last updated on <%= @document.updated_at.localtime.strftime("%A, %b %d, %Y at %H:%M") %>
+    </p>
+    <p>
+      <%= sanitize @document.tag_list.map { |t| link_to t, tag_path(t) }.join(', '), tags: %w(a), attributes: %w(href ) %>
+    </p>
+  </div>
+</div>
 
-<h1 class="document"><%= @document.title %></h1>
+
+
+<div class="row" id="workspace_menu">
+  <div class="col-sm-6" id="workspace_menu_main">
+    <% if @document.note %>
+      Linked to: <%= link_to @document.note.title, @document.note %>
+    <% end %>
+  </div>
+  <div class="col-sm-6 menu_edit" id="workspace_menu_context">
+    This document:
+    <%= link_to 'Download', @document.file_url %>
+    (<%= number_to_human_size @document.file.size -%>,
+     <%= @document.file.file.extension.downcase-%>)
+    <%= link_to 'Edit', edit_document_path(@document) %>
+    <%= link_to 'Delete', @document, method: :delete, data: { confirm: 'Are you sure?' } %>               
+  </div>
+</div>
+
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-6">
+  <div class="row" id="workspace_content">
+    <div class="col-sm-6 cover-image text-center">
       <%= link_to @document.file_url do %>
-        <%= image_tag @document.file_url(:cover), class: "cover" if @document.file? %>
+        <%= image_tag @document.file_url(:cover), class: "img-responsive cover" if @document.file? %>
       <% end %>
     </div>
-    <div class="col-sm-6">
-      <p>
-        <strong>Summary:</strong>
-        <%= @document.summary %>
-      </p>
-      <p>
-        <strong>Author:</strong>
-        <%= @document.author %>
-      </p>
-      <p>
-        <strong>Note:</strong>
-        <%= @document.note %>
-      </p>
-      <p>Tags:
-          <%= sanitize @document.tag_list.map { |t| link_to t, tag_path(t) }.join(', '), tags: %w(a), attributes: %w(href ) %>
-      </p>
+    <div class="col-sm-6 note-text" id="workspace_tools">
+    <% if @document.note %>
+        Associated note:
+        <%= link_to @document.note do %>
+          <h2><%= @document.note.title %></h2>
+        <% end %>
+        <p><%= @document.note.summary %></p>
+        <hr>
+        <%= sanitize @document.note.text,
+          tags: %w(h2 h3 h4 h5 p br ul ol li strong em u a hr blockquote img),
+          attributes: %w(href src alt), class: "note-text" %>
+
+    <% end %>
     </div>
   </div>
 </div>
 
 
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
