@@ -49,10 +49,12 @@
 		  	<% @note.documents.each do |document| %>
 				  <li class="media">
 				    <div class="media-left">
-				      <a href="#">
+				      <%= if document.file?
+				      			link_to document.file_url do %>
 				      <%= image_tag document.file_url(:small_thumb),
-				      				class: "media-object thumb" if document.file? %>
-				      </a>
+				      				class: "media-object thumb" %>
+				      	<% end
+				      	end %>
 				    </div>
 				    <div class="media-body">
 				      <h4 class="media-heading"><%= link_to document.title, document -%></h4>
