@@ -1,6 +1,7 @@
 class Note < ApplicationRecord
   belongs_to :user
   has_many :to_dos, dependent: :destroy
+  has_many :documents
   acts_as_taggable
 
   def has_to_dos?
@@ -10,6 +11,15 @@ class Note < ApplicationRecord
       return true
     end
   end
+
+  def has_documents?
+    if self.documents.length == 0
+      return false
+    else
+      return true
+    end
+  end
+ 
 
   def has_open_to_dos?
     open = false

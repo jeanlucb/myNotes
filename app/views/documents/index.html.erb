@@ -1,0 +1,20 @@
+<h1>Documents</h1>
+
+<%= paginate @documents, :theme => 'twitter-bootstrap-3',
+    :pagination_class => "pagination pagination-sm" %>
+
+
+<div class="container-fluid">
+  <% @documents.each do |document| %>
+      <%= render 'document_summary', document: document %>
+  <% end %>
+</div>
+
+<%= paginate @documents, :theme => 'twitter-bootstrap-3',
+:pagination_class => "pagination pagination-sm" %>
+
+
+<br>
+
+<%= link_to 'New Document', new_document_path %>
+

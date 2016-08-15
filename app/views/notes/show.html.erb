@@ -19,11 +19,11 @@
 
 <div class="row" id="workspace_menu">
 	<div class="col-sm-8" id="workspace_menu_main">
-	  <a href="#">2 files</a>
+	  <%= render "documents/n_documents", :note => @note %>
 	  <%= render "to_dos/n_to_dos", :note => @note %>
 	  Add new: 
-	  <a href="#">Document or file</a>
-	  <a href="#">Task</a> 
+	  <%= link_to 'Document or file', new_document_path(note_id: @note.id) %>
+	  <%= link_to 'Task', new_to_do_path(note_id: @note.id) %>
 	</div>
 	<div class="col-sm-4 menu_edit" id="workspace_menu_context">
 	  This note: 
@@ -40,15 +40,37 @@
     		attributes: %w(href src alt) %>
   </div>
   <div class="col-sm-4" id="workspace_tools">
+  	<% if @note.documents.length != 0 %>
 
-	  <h4>Documents and files</h4>
-	  <dl>
-	    <dt><a href="#">Document 1: Title</a></dt>
-	    <dd style="margin-bottom: 10px;">This is a very short text summary of the document.</dd>
-	    <dt><a href="#">Document 2: Title</a></dt>
-	    <dd>This is a very short text summary of the document.</dd>
-	  </dl>
-	  <a href="#">Upload a new file</a>
+
+
+	  	<h4>Documents and files</h4>
+			<ul class="media-list">
+		  	<% @note.documents.each do |document| %>
+				  <li class="media">
+				    <div class="media-left">
+				      <%= if document.file?
+				      			link_to document.file_url do %>
+				      <%= image_tag document.file_url(:small_thumb),
+				      				class: "media-object thumb" %>
+				      	<% end
+				      	end %>
+				    </div>
+				    <div class="media-body">
+				      <h4 class="media-heading"><%= link_to document.title, document -%></h4>
+				      <p class="document-list">
+				      	<%= truncate document.summary, length: 120, separator: ' ' -%>
+    					</p>
+    					<p class="document-list">
+		    				<%= link_to 'Download', document.file_url %>
+    						(<%= number_to_human_size document.file.size -%>)
+    					</p>
+				    </div>
+				  </li>
+		    <% end %>
+			</ul>
+	  <% end %>
+	  <%= link_to 'Upload a new document or a new file', new_document_path(note_id: @note.id) %>
 
 	  <br>
 	  <% if @note.has_to_dos? %>

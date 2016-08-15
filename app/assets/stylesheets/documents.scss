@@ -1,0 +1,31 @@
+// Place all the styles related to the Documents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h1.document {
+	margin-bottom: 20px;
+}
+
+.cover-image {
+	margin-bottom: 20px;
+}
+
+.thumb {
+	border: 1px solid #cccccc;
+}
+
+img.cover {
+	border: 1px solid #cccccc;
+	background: white;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px;
+}
+
+p.document-list {
+	font-size: 80%;
+	margin-bottom: 5px;
+}
+
+h4.media-heading {
+	font-size: 100%;
+}

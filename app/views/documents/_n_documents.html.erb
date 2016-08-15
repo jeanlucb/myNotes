@@ -1,0 +1,6 @@
+<%=
+	if note.has_documents?
+		link_to pluralize(note.documents.length, "document"),
+			documents_path(note_id: note.id)
+	end
+%>
