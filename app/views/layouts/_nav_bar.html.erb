@@ -1,7 +1,26 @@
-<nav class="navbar">
+<nav class="navbar" id="main_navbar">
   <div class="container-fluid">
-    <% if user_signed_in? %>
-      <%= render "layouts/nav_bar_header" %>
-    <% end %>
+  	<div class="row">
+
+			<div class="col-xs-6">
+				<ul class="nav navbar-nav" id="main_navbar_items">
+					<li><a href="/notes">Notes</a></li>
+					<li><a href="/documents">Docs & Files</a></li>
+					<% label = todo_label ToDo.all %>
+					<li><a href="/to_dos">To-Do's <span class="badge progress-bar-<%= label[:label]-%>">
+						<%= label [:number] -%></span></a></li>
+				</ul>
+			</div>
+
+			<div class="col-xs-6 text-right">
+				<div id="main_navbar_create">
+						<span id="main_navbar_create_header">New:</span>
+						<%= link_to 'Note', new_note_path %>
+						<%= link_to 'Document or file', new_document_path %>
+						<%= link_to 'To-Do', new_to_do_path %>
+				</div>
+			</div>
+
+		</div> <!-- ./row-->
   </div>
 </nav>

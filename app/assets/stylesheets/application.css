@@ -61,30 +61,53 @@ body {
 
 /* Main navigation zone */
 
-.navbar {
-	margin: 20px 0px 0px 0px;
+#main_navbar {
+	margin: 20px 20px 0px 20px;
 }
 
-#navbar a {
+#main_navbar_items a {
 	color: #777777;
 	text-shadow: 1px 1px #fff;
 	padding-left: 0px;
 }
 
-#navbar a:hover,
-#navbar a:focus {
+#main_navbar_items a:hover,
+#main_navbar_items a:focus {
 	background: transparent;
 	color: #222222;
 }
 
-#navbar a > span {
+#main_navbar_items a > span {
+	color: #ffffff;
+	text-shadow: none;
+	font-weight: 800;
+}
+
+#main_navbar_create {
+	padding: 20px 0px 10px 0px;
+	font-size: smaller;
+}
+
+#main_navbar_create_header span {
+}
+
+#main_navbar_create a {
+	text-shadow: 1px 1px #fff;
+	padding-left: 5px;
+	text-decoration: underline;
+}
+
+#main_navbar_create a:hover,
+#main_navbar_create a:focus {
+	background: transparent;
+	color: #222222;
+}
+
+#main_navbar_create a > span {
 	color: #ffffff;
 	text-shadow: none;
 }
 
-.icon-bar {
-	background: #444444;
-}
 
 /* Rails classes */
 
