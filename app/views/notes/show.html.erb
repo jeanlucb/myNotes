@@ -19,11 +19,11 @@
 
 <div class="row" id="workspace_menu">
 	<div class="col-sm-8" id="workspace_menu_main">
-	  <a href="#">2 files</a>
+	  <%= render "documents/n_documents", :note => @note %>
 	  <%= render "to_dos/n_to_dos", :note => @note %>
 	  Add new: 
-	  <a href="#">Document or file</a>
-	  <a href="#">Task</a> 
+	  <%= link_to 'Document or file', new_document_path(note_id: @note.id) %>
+	  <%= link_to 'Task', new_to_do_path(note_id: @note.id) %>
 	</div>
 	<div class="col-sm-4 menu_edit" id="workspace_menu_context">
 	  This note: 

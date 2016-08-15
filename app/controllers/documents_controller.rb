@@ -4,7 +4,10 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    @documents = current_user.documents
+    if(params[:note_id])
+      @documents = @documents.select {|d| d.note_id==params[:note_id].to_i}
+    end
   end
 
   # GET /documents/1

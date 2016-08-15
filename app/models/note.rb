@@ -12,6 +12,15 @@ class Note < ApplicationRecord
     end
   end
 
+  def has_documents?
+    if self.documents.length == 0
+      return false
+    else
+      return true
+    end
+  end
+ 
+
   def has_open_to_dos?
     open = false
     self.to_dos.each do |t|

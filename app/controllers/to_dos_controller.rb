@@ -8,8 +8,13 @@ class ToDosController < ApplicationController
     if params[:tag]
       @tag = params[:tag]
       @to_dos = @to_dos.tagged_with(params[:tag])
+    elsif params[:note_id]
+      @to_dos = @to_dos.where(note_id: params[:note_id].to_i)
     end
-    @open_to_dos = @to_dos.order(deadline: :asc).select {|t| t.achieved == false}
+    ## TODO: Manage display_all param: all todos: only open, todos of a note: all
+    if not(params[:display_all])
+      @to_dos = @to_dos.where(displayed: "true").order(deadline: :asc)
+    end
     @to_dos = @to_dos.order(deadline: :asc).page(params[:page]).per(10)
   end
 
@@ -26,6 +31,7 @@ class ToDosController < ApplicationController
       @to_do.note = @note
       @to_do.tag_list = @note.tag_list
     end
+    @to_do.displayed = true
   end
 
   # GET /to_dos/1/edit
