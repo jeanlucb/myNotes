@@ -1,0 +1,53 @@
+<div class="row" style="margin-bottom: 20px;margin-top: 20px;">
+    <div class="col-sm-8">
+        
+        <div class="container-fluid">
+            <div class="row">
+                <%= link_to document do %>
+                    <div class="col-sm-12 note">
+                        <h2><%= document.title %></h2>
+                        <p class="note_summary"><%= document.summary %></p>
+                    </div>
+                <% end %>
+             </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <%= link_to 'Edit', edit_document_path(document),
+                        class: "btn btn-primary btn-sm" %>
+                    <%= link_to 'Delete', document, method: :delete,
+                        class: "btn btn-danger btn-sm",
+                        data: { confirm: 'Are you sure?' } %>
+                </div>
+                <div class="col-sm-4">
+                    <p>Tags:
+                        <%= sanitize document.tag_list.map { |t| link_to t, tag_path(t) }.join(', '), tags: %w(a), attributes: %w(href ) %>
+                    </p>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <p class="note_infos text-right">
+                        Created on <%= document.created_at.localtime.strftime("%a, %b %d, %Y at %H:%M") %><br>
+                        Last updated on <%= document.updated_at.localtime.strftime("%a, %b %d, %Y at %H:%M") %><br>
+                    </p>
+                </div> 
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-3" style="padding-top: 5px;">
+        <div class="media-left">
+          <%= if document.file?
+                    link_to document.file_url do %>
+          <%= image_tag document.file_url(:small_thumb),
+                        class: "media-object thumb" %>
+            <% end
+            end %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= link_to document.title, document -%></h4>
+            <p class="document-list">
+                <%= link_to 'Download', document.file_url %>
+                (<%= number_to_human_size document.file.size -%>)
+            </p>
+        </div>
+    </div>
+</div>

@@ -6,8 +6,9 @@ class DocumentsController < ApplicationController
   def index
     @documents = current_user.documents
     if(params[:note_id])
-      @documents = @documents.select {|d| d.note_id==params[:note_id].to_i}
+      @documents = @documents.where(note_id: params[:note_id])
     end
+    @documents = @documents.order(updated_at: :desc).page(params[:page]).per(5)
   end
 
   # GET /documents/1
