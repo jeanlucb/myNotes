@@ -1,4 +1,4 @@
-<div class="row" style="margin-bottom: 20px;margin-top: 20px;">
+<div class="row" style="margin-bottom: 40px;margin-top: 20px;">
     <div class="col-sm-8">
         
         <div class="container-fluid">
@@ -34,6 +34,29 @@
 
     </div>
     <div class="col-sm-3">
+        <% if note.has_documents? %>
+            <h4 class="todos_title">Documents and files</h4>
+            <% note.documents.each do |document| %>
+                <p>
+                <div class="media-left">
+                  <%= if document.file?
+                            link_to document.file_url do %>
+                  <%= image_tag document.file_url(:small_thumb),
+                                class: "media-object thumb" %>
+                    <% end
+                    end %>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading"><%= link_to document.title, document -%></h4>
+                    <p class="document-list">
+                        <%= link_to 'Download', document.file_url %>
+                        (<%= number_to_human_size document.file.size -%>)
+                    </p>
+                </div>
+                </p>
+
+            <% end %>
+        <% end %>
         <% if note.has_open_to_dos? %>
             <h4 class="todos_title">To Do's</h4>
             <%= render 'to_dos/todo_list', tasks: note.to_dos.order(:achieved, deadline: :asc) %>
