@@ -37,20 +37,46 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6">
+    <% if @document.file? %>
+      <div class="col-sm-1 text-right" style="margin-left: -15px;">
+        <%= link_to document.download_url do 
+              image_tag @document.file_url(:small_thumb), class: "media-object thumb"
+            end %>
+      </div>
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= f.label :file, "Upload a new file..." %>
+          <%= f.file_field :file %><br />
+        </div>
+      </div>
+    <% else %>
+      <div class="col-sm-6" style="margin-left: -15px;">
         <div class="form-group">
           <%= f.label :file, "Upload a local file..." %>
           <%= f.file_field :file %><br />
         </div>
       </div>
-      <div class="col-sm-6">
+    <% end %>
+      <div class="col-sm-6" style="padding-right: 0px;">
         <div class="form-group">
           <%= f.label :remote_file_url, "... or give a file URL" %>
           <%= f.text_field :remote_file_url, class: "form-control" %>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12" style="margin-left: -15px; padding-right: 0px;">
+        <div class="form-group">
+          <%= f.label :main_link, "External link" %>
+          (&nbsp;<%= f.check_box :use_main_link %> <%= f.label "Use this link as download link in myNotes.", style: "font-weight: normal" %>&nbsp;)
+          <%= f.text_field :main_link, class: "form-control" %>
+        </div>
+      </div>
+    </div>
   </div>
+
+  
+
 
 
   

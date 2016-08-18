@@ -36,7 +36,7 @@
     <div class="col-sm-3" style="padding-top: 5px;">
         <div class="media-left">
           <%= if document.file?
-                    link_to document.file_url do %>
+                    link_to document.download_url do %>
           <%= image_tag document.file_url(:small_thumb),
                         class: "media-object thumb" %>
             <% end
@@ -45,7 +45,7 @@
         <div class="media-body">
           <h4 class="media-heading"><%= link_to document.title, document -%></h4>
             <p class="document-list">
-                <%= link_to 'Download', document.file_url %>
+                <%= link_to 'Download', document.download_url %>
                 (<%= number_to_human_size document.file.size -%>)
             </p>
         </div>

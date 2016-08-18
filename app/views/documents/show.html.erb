@@ -24,7 +24,7 @@
   </div>
   <div class="col-sm-6 menu_edit" id="workspace_menu_context">
     This document:
-    <%= link_to 'Download', @document.file_url %>
+    <%= link_to 'Download', @document.download_url %>
     (<%= number_to_human_size @document.file.size -%>,
      <%= @document.file.file.extension.downcase-%>)
     <%= link_to 'Edit', edit_document_path(@document) %>
@@ -36,7 +36,7 @@
 <div class="container-fluid">
   <div class="row" id="workspace_content">
     <div class="col-sm-6 cover-image text-center">
-      <%= link_to @document.file_url do %>
+      <%= link_to @document.download_url do %>
         <%= image_tag @document.file_url(:cover), class: "img-responsive cover" if @document.file? %>
       <% end %>
     </div>
