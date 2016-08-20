@@ -5,6 +5,11 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @notes = current_user.notes
+    if params[:q].nil? or params[:q]==""
+      @notes = current_user.notes
+    else
+      @notes = Note.search(params[:q]).records
+    end
     if params[:tag]
       @tag = params[:tag]
       @notes = @notes.tagged_with(params[:tag])
@@ -34,6 +39,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
+        @note.__elasticsearch__.index_document
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
         format.json { render :show, status: :created, location: @note }
       else

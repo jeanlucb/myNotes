@@ -54,5 +54,5 @@ gem 'bootstrap-kaminari-views'
 gem 'rmagick'
 gem 'fog'
 gem 'carrierwave'
-
-
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'

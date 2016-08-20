@@ -1,8 +1,14 @@
+require 'elasticsearch/model'
+
 class Note < ApplicationRecord
+
   belongs_to :user
   has_many :to_dos, dependent: :destroy
   has_many :documents
   acts_as_taggable
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   def has_to_dos?
     if self.to_dos.length == 0
@@ -31,4 +37,19 @@ class Note < ApplicationRecord
     return open
   end
 
+  def self.search(query)
+    __elasticsearch__.search(
+      {
+        query: {
+          multi_match: {
+            query: query,
+            fields: ['title^10', 'summary^5','text']
+          }
+        }
+      }
+    )
+  end
+
 end
+
+Note.import force: true
