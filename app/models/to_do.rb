@@ -1,8 +1,13 @@
+require 'elasticsearch/model'
+
 class ToDo < ApplicationRecord
 	belongs_to :user
 	belongs_to :note, optional: true
 	acts_as_taggable
 
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   
   def not_achieved?
     return not(self.achieved)
@@ -34,5 +39,19 @@ class ToDo < ApplicationRecord
     end
   end
 
+  def self.search(query)
+    __elasticsearch__.search(
+      {
+        query: {
+          multi_match: {
+            query: query,
+            fields: ['title^10', 'text']
+          }
+        }
+      }
+    )
+  end
 
 end
+
+ToDo.import force: true

@@ -47,6 +47,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
+        @document.__elasticsearch__.index_document
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else

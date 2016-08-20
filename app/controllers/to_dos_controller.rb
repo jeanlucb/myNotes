@@ -4,7 +4,11 @@ class ToDosController < ApplicationController
   # GET /to_dos
   # GET /to_dos.json
   def index
-    @to_dos = current_user.to_dos
+    if params[:q].nil? or params[:q]==""
+      @to_dos = current_user.to_dos
+    else
+      @to_dos = current_user.to_dos.search(params[:q]).records
+    end
     if params[:tag]
       @tag = params[:tag]
       @to_dos = @to_dos.tagged_with(params[:tag])
@@ -50,6 +54,7 @@ class ToDosController < ApplicationController
 
     respond_to do |format|
       if @to_do.save
+        @to_do.__elasticsearch__.index_document
         format.html { redirect_to @to_do, notice: 'To do was successfully created.' }
         format.json { render :show, status: :created, location: @to_do }
       else
