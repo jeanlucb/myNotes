@@ -4,7 +4,11 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = current_user.documents
+    if params[:q].nil? or params[:q]==""
+      @documents = current_user.documents
+    else
+      @documents = current_user.documents.search(params[:q]).records
+    end
     if(params[:note_id])
       @documents = @documents.where(note_id: params[:note_id])
     end

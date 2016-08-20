@@ -4,11 +4,10 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = current_user.notes
     if params[:q].nil? or params[:q]==""
       @notes = current_user.notes
     else
-      @notes = Note.search(params[:q]).records
+      @notes = current_user.notes.search(params[:q]).records
     end
     if params[:tag]
       @tag = params[:tag]
