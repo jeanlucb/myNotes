@@ -75,14 +75,24 @@
     </div>
   </div>
 
-  
 
+  <% if @document.id %>
+    <div class="form-group">
+      <%= check_box_tag :update_files %> Recreate the thumbnail images
+    </div>
+  <% end %>
 
-
-  
 
   <div class="actions">
     <%= f.submit "Save & Quit", class: "btn btn-primary btn-sm" %>
   </div>
+
+  
+
+
+
+  
+
+  
 
 <% end %>

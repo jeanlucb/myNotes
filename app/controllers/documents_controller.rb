@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :edit, :update, :update_files, :destroy]
 
   # GET /documents
   # GET /documents.json
@@ -57,6 +57,17 @@ class DocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @document.update(document_params)
+        if params[:update_files]
+          begin
+            @document.file.cache_stored_file! 
+            @document.file.retrieve_from_cache!(@document.file.cache_name) 
+            @document.file.recreate_versions! 
+            @document.save! 
+          rescue => e
+            format.html { render :edit }
+            format.json { render json: @document.errors, status: :unprocessable_entity }
+          end
+        end
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       else
@@ -65,6 +76,23 @@ class DocumentsController < ApplicationController
       end
     end
   end
+
+  def update_files
+    respond_to do |format|
+      begin
+        @document.file.cache_stored_file! 
+        @document.file.retrieve_from_cache!(@document.file.cache_name) 
+        @document.file.recreate_versions! 
+        @document.save! 
+        format.html { redirect_to @document, notice: 'The files were successfully updated.' }
+        format.json { render :show, status: :ok, location: @document }
+      rescue => e
+        format.html { render :edit }
+        format.json { render json: @document.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   # DELETE /documents/1
   # DELETE /documents/1.json
