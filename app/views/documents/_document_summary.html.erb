@@ -46,7 +46,8 @@
           <h4 class="media-heading"><%= link_to document.title, document -%></h4>
             <p class="document-list">
                 <%= link_to 'Download', document.download_url %>
-                (<%= number_to_human_size document.file.size -%>)
+                (<%= number_to_human_size document.file.size -%>,
+                 <%= document.file.file.extension.downcase-%>)
             </p>
         </div>
     </div>
