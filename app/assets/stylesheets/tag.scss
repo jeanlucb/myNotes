@@ -9,3 +9,20 @@ h2.tag {
 	font-size: 150%;
 	font-weight: 800;
 }
+
+
+/* Tag clouds */
+
+#tag_cloud {
+  line-height: 1.6em;
+  border: 1px solid #cccccc;
+  background: #fafaff;
+  padding: 10px;
+  border-radius: 5px;
+  text-shadow: 1px 1px #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 4px;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
+
