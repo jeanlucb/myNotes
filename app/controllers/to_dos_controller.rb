@@ -9,6 +9,8 @@ class ToDosController < ApplicationController
     else
       @to_dos = current_user.to_dos.search(params[:q]).records
     end
+    @tags = @to_dos.tag_counts.order(taggings_count: :desc).first(40).sort_by {|t| t.name}
+
     if params[:tag]
       @tag = params[:tag]
       @to_dos = @to_dos.tagged_with(params[:tag])
