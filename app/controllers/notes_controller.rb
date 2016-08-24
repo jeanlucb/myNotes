@@ -9,11 +9,16 @@ class NotesController < ApplicationController
     else
       @notes = current_user.notes.search(params[:q]).records
     end
+
+    @tags = @notes.tag_counts.order(taggings_count: :desc).first(40).sort_by {|t| t.name}
+
     if params[:tag]
       @tag = params[:tag]
       @notes = @notes.tagged_with(params[:tag])
     end
+
     @notes = @notes.order(updated_at: :desc).page(params[:page]).per(5)
+
   end
 
   # GET /notes/1

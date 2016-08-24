@@ -9,6 +9,7 @@ class DocumentsController < ApplicationController
     else
       @documents = current_user.documents.search(params[:q]).records
     end
+    @tags = @documents.tag_counts
     if(params[:note_id])
       @documents = @documents.where(note_id: params[:note_id])
     end

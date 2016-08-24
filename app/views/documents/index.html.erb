@@ -5,7 +5,7 @@
 		</div>
 		<div class="col-sm-6 text-right" style="padding-top: 18px">
 
-			<%= form_tag('/document', method: :get, class: "form-inline") do  %>
+			<%= form_tag('/documents', method: :get, class: "form-inline") do  %>
 				<div class="form-group">
 			    <%= text_field_tag :q, params[:q], class: "form-control"  %>
 				</div>
@@ -22,7 +22,7 @@
 		</div>
 		
 		<div class="col-sm-6 text-justify" >
-			<%= render 'tag/cloud', tags: @documents.tag_counts %>
+			<%= render 'tag/cloud', tags: @tags %>
 		</div>
 	</div>
 </div>
