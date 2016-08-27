@@ -1,7 +1,7 @@
 <div class="row" id="workspace_header">
   <div class="col-sm-8" id="workspace_title">
-    <h1><%= @document.title %></h1>
-    <p id="workspace_header_summary"><%= @document.summary %></p>
+    <h1><%= best_in_place @document, :title %></h1>
+    <p id="workspace_header_summary"><%= best_in_place @document, :summary, :place_holder => "Add a summary here...", as: :textarea %></p>
   </div>
   <div class="col-sm-4" id="workspace_header_infos">
     <p>

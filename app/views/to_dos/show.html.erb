@@ -1,41 +1,29 @@
-<p>
-  <strong>Title:</strong>
-  <%= @to_do.title %>
-</p>
 
+<h1>
+  <%= best_in_place @to_do, :title %>
+</h1>
 <p>
-  <strong>Text:</strong>
-  <%= @to_do.text %>
+  <%= best_in_place @to_do, :text, as: :textarea %>
 </p>
-
 <p>
   <strong>Status:</strong>
-  <%= @to_do.status %>
+  <%= best_in_place @to_do, :status,:place_holder => "Change status" %>
 </p>
+
 
 <p>
   <strong>Deadline:</strong>
-  <%= @to_do.deadline %>
-</p>
-
-<p>
-  <strong>Displayed:</strong>
-  <%= @to_do.displayed %>
+  <%= best_in_place @to_do, :deadline %>
 </p>
 
 <p>
   <strong>Achieved:</strong>
-  <%= @to_do.achieved %>
+  <%= best_in_place @to_do, :achieved, as: :checkbox, collection: %w[No Yes] %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @to_do.user %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @to_do.note %>
+  <strong>Displayed:</strong>
+  <%= best_in_place @to_do, :displayed, as: :checkbox, collection: %w[No Yes] %>
 </p>
 
 <%= link_to 'Edit', edit_to_do_path(@to_do) %> |
