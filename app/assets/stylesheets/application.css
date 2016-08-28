@@ -12,8 +12,11 @@
  *
  *= require_tree .
  *= require 'bootstrap-sass-official'
+ *= require jquery-ui
  *= require_self
-*/
+ */
+
+ @import "jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.css";
 
 body {
 	margin: 0px;

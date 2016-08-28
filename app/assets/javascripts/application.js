@@ -14,6 +14,10 @@
 //= require jquery_ujs
 //= require tinymce-jquery
 //= require best_in_place
+//= require jquery-ui
+//= require best_in_place.jquery-ui
+//= require jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon
+//= require jqueryui-timepicker-addon/dist/i18n/jquery-ui-timepicker-fr
 //= require_tree .
 
 $(document).ready(function() {

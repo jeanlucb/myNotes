@@ -57,6 +57,7 @@ gem 'carrierwave'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
+gem 'jquery-ui-rails'
 gem 'best_in_place'
 
 

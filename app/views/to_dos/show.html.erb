@@ -1,19 +1,26 @@
 
-<h1>
-  <%= best_in_place @to_do, :title %>
+<h1 class="todo text-<%= @to_do.label -%>">
+  <%= best_in_place @to_do, :title, :inner_class => "form-control" %>
 </h1>
+
 <p>
-  <%= best_in_place @to_do, :text, as: :textarea %>
+  <%= best_in_place @to_do, :text, as: :textarea, :inner_class => "form-control" %>
 </p>
+
 <p>
   <strong>Status:</strong>
-  <%= best_in_place @to_do, :status,:place_holder => "Change status" %>
+  <%= best_in_place @to_do, :status, :place_holder => "Change status" %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= best_in_place @to_do, :tag_list, :inner_class => "form-control" %>
 </p>
 
 
 <p>
   <strong>Deadline:</strong>
-  <%= best_in_place @to_do, :deadline %>
+  <%= best_in_place @to_do, :deadline, as: :datetime %>
 </p>
 
 <p>

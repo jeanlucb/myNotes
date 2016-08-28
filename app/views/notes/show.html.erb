@@ -1,7 +1,7 @@
 <div class="row" id="workspace_header">
 	<div class="col-sm-8" id="workspace_title">
 		<h1><%= best_in_place @note, :title %></h1>
-	  <p id="workspace_header_summary"><%= best_in_place @note, :summary, as: :textarea %></p>
+	  <p id="workspace_header_summary"><%= best_in_place @note, :summary, as: :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %></p>
 	</div>
 	<div class="col-sm-4" id="workspace_header_infos">
 	  <p>
@@ -36,7 +36,7 @@
 <div class="row" id="workspace_content">
   <div class="col-sm-8 note_text">
     <%= sanitize @note.text,
-    		tags: %w(h2 h3 h4 h5 p br ul ol li strong em u a hr blockquote img),
+    		tags: %w(h1 h2 h3 h4 h5 p br ul ol li strong em u a hr blockquote img table th tr td),
     		attributes: %w(href src alt) %>
   </div>
   <div class="col-sm-4" id="workspace_tools">
