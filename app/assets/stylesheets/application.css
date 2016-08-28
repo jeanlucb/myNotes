@@ -240,8 +240,64 @@ body {
 
 body.mce-content-body {
 	padding: 10px;
-    font-size: 18px;
-    color: #555555;
-    font-family: "Georgia", serif;
-    background: #ffffff;
+  font-size: 18px;
+  color: #555555;
+  font-family: "Georgia", serif;
+  background: #ffffff;
 }
+
+.note_text h1, h2, h3, h4 {
+	margin-top: 25px;
+}
+.mce-content-body h1, h2, h3, h4 {
+	margin-top: 25px;
+}
+
+.mce-content-body h1,
+.note_text h1 {
+	font-weight: bold;
+	font-size: 175%;
+}
+
+.mce-content-body h2,
+.note_text h2 {
+	font-weight: bold;
+	font-size: 150%;
+}
+
+.mce-content-body h3,
+.note_text h3 {
+	font-weight: bold;
+	font-size: 100%;
+}
+
+.mce-content-body h4,
+.note_text h4 {
+	font-size: 100%;
+	font-style: italic;
+}
+
+.mce-content-body blockquote > p,
+.note_text blockquote > p {
+	font-style: italic;
+	font-size: 90%;
+	color: #888888;
+}
+
+.mce-content-body table,
+.note_text table {
+	padding: 5px;
+	border: 1px solid #888888;
+}
+
+.mce-content-body td,
+.note_text td {
+	padding: 5px;
+	border: 1px solid #888888;
+}
+
+.mce-content-body th,
+.note_tex th {
+	font-weight: bold;
+}
+
