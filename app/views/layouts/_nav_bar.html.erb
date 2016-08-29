@@ -6,7 +6,7 @@
 				<ul class="nav navbar-nav" id="main_navbar_items">
 					<li><a href="/notes">Notes</a></li>
 					<li><a href="/documents">Docs & Files</a></li>
-					<% label = todo_label ToDo.all %>
+					<% label = todo_label current_user.to_dos %>
 					<li><a href="/to_dos">To-Do's <span class="badge progress-bar-<%= label[:label]-%>">
 						<%= label [:number] -%></span></a></li>
 				</ul>
