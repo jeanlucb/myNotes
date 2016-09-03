@@ -25,7 +25,7 @@ class ToDo < ApplicationRecord
       if self.deadline.today?
         return "warning" # For today
       else
-        return "primary" # For later on
+        return "success" # For later on
       end
     end
   end

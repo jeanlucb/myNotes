@@ -29,9 +29,8 @@
 		<% @to_dos.each do |to_do| %>
 			<div class="panel panel-<%= to_do.label -%>">
 				 <div class="panel-heading">
-				 	<%= link_to to_do, action: :edit do %>
 				  	<div class="row">
-				  		<div class="col-sm-9 panel-title">
+				  		<div class="col-sm-9">
 					  		<h4 class="text-<%= to_do.label -%>" style="margin:0px">
 					  			<%= to_do.title %>
 					  		</h4>
@@ -40,7 +39,6 @@
 				  			<small class="label label-<%= to_do.label  -%>"><%= to_do.deadline.localtime.strftime("%a, %b %d, %Y at %H:%M") %></small>
 				  		</div>
 				  	</div>
-				  	<% end %>
 
 					</div>
 					<div class="panel-body">
