@@ -1,5 +1,6 @@
 
 <div class="container-fluid">
+
 	<div class="row">
 		<div class="col-sm-6">
 			<h1>To-Do's</h1>
@@ -12,32 +13,69 @@
 				</div>
 				<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
 			<% end %>
-
-			
 		</div>
 	</div>
+
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-12">
 		<%= paginate @to_dos, :theme => 'twitter-bootstrap-3',
 		    :pagination_class => "pagination pagination-sm" %>
 		</div>
-		
-		<div class="col-sm-6 text-justify" >
-			<%= render 'tag/cloud', tags: @tags %>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+
+		<% @to_dos.each do |to_do| %>
+			<div class="panel panel-<%= to_do.label -%>">
+				 <div class="panel-heading">
+				 	<%= link_to to_do, action: :edit do %>
+				  	<div class="row">
+				  		<div class="col-sm-9 panel-title">
+					  		<h4 class="text-<%= to_do.label -%>" style="margin:0px">
+					  			<%= to_do.title %>
+					  		</h4>
+				  		</div>
+				  		<div class="col-sm-3 text-right">
+				  			<small class="label label-<%= to_do.label  -%>"><%= to_do.deadline.localtime.strftime("%a, %b %d, %Y at %H:%M") %></small>
+				  		</div>
+				  	</div>
+				  	<% end %>
+
+					</div>
+					<div class="panel-body">
+						<div class="row">
+					  		<div class="col-sm-7">
+					  			<p class="text-<%= to_do.label -%>">
+					  				<%= h to_do.text %><br>
+					  			</p>
+					  		</div>
+					  		<div class="col-sm-5 text-right">
+						  		<p class="note_infos text-right">
+										Created on <%= to_do.created_at.localtime.strftime("%a, %b %d, %Y at %H:%M") %><br>
+										Last updated on <%= to_do.updated_at.localtime.strftime("%a, %b %d, %Y at %H:%M") %><br>
+									</p>
+										<%= link_to 'Edit', edit_to_do_path(to_do),
+											class: "btn btn-warning btn-xs" %>
+										<%= link_to 'Delete', to_do, method: :delete,
+											class: "btn btn-danger btn-xs",
+											data: { confirm: 'Are you sure?' } %>
+					  		</div>
+					  	</div>
+					</div>
+				</div>
+			<% end %>
+
+			<div>
+			</div>
 		</div>
 	</div>
-</div>
-
-
-<div class="container">
-
-	<% @to_dos.each do |to_do| %>
-		<%= render 'to_do_summary', to_do: to_do %>
-	<% end %>
-
+	<div class="row">
+		<div class="col-sm-12">
+		<%= paginate @to_dos, :theme => 'twitter-bootstrap-3',
+		    :pagination_class => "pagination pagination-sm" %>
+		</div>
+	</div>
 
 </div>
 
-<br>
-
-<%= link_to 'New To Do', new_to_do_path %>

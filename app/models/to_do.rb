@@ -16,7 +16,7 @@ class ToDo < ApplicationRecord
 
   def label
     if self.achieved
-      return "muted"
+      return "default"
     end
 
     if self.deadline < Time.now	
@@ -28,6 +28,10 @@ class ToDo < ApplicationRecord
         return "primary" # For later on
       end
     end
+  end
+
+  def tag_to_text
+    tag_list.map { |t| t}.join(' ')
   end
 
 
@@ -45,7 +49,7 @@ class ToDo < ApplicationRecord
         query: {
           multi_match: {
             query: query,
-            fields: ['title^10', 'text']
+            fields: ['title^10', 'text', 'tag_to_text']
           }
         }
       }

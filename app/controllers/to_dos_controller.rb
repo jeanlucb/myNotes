@@ -19,9 +19,9 @@ class ToDosController < ApplicationController
     end
     ## TODO: Manage display_all param: all todos: only open, todos of a note: all
     if not(params[:display_all])
-      @to_dos = @to_dos.where(displayed: "true").order(deadline: :asc)
+      @to_dos = @to_dos.where(displayed: "true").order(deadline: :desc)
     end
-    @to_dos = @to_dos.order(deadline: :asc).page(params[:page]).per(10)
+    @to_dos = @to_dos.order(deadline: :desc).page(params[:page]).per(5)
   end
 
   # GET /to_dos/1
@@ -71,7 +71,7 @@ class ToDosController < ApplicationController
   def update
     respond_to do |format|
       if @to_do.update(to_do_params)
-        format.html { redirect_to @to_do, notice: 'To do was successfully updated.' }
+        format.html { redirect_to :to_dos, notice: 'To do was successfully updated.' }
         format.json { render :show, status: :ok, location: @to_do }
       else
         format.html { render :edit }
