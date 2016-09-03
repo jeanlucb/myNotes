@@ -19,9 +19,9 @@ class ToDosController < ApplicationController
     end
     ## TODO: Manage display_all param: all todos: only open, todos of a note: all
     if not(params[:display_all])
-      @to_dos = @to_dos.where(displayed: "true").order(deadline: :desc)
+      @to_dos = @to_dos.where(displayed: "true").order(deadline: :asc)
     end
-    @to_dos = @to_dos.order(deadline: :desc).page(params[:page]).per(5)
+    @to_dos = @to_dos.order(deadline: :asc).page(params[:page]).per(5)
   end
 
   # GET /to_dos/1
