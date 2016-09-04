@@ -1,4 +1,6 @@
-<h1></h1>
+<% title @to_do.title %>
+
+<h1><%= yield :title %></h1>
 
 <%= render 'form', to_do: @to_do %>
 

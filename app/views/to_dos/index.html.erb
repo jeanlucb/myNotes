@@ -1,9 +1,10 @@
+<% title "To-Do's" %>
 
 <div class="container-fluid">
 
 	<div class="row">
 		<div class="col-sm-6">
-			<h1>To-Do's</h1>
+			<h1><%= yield :title %></h1>
 		</div>
 		<div class="col-sm-6 text-right" style="padding-top: 18px">
 
@@ -32,6 +33,7 @@
 				  	<div class="row">
 				  		<div class="col-sm-9">
 					  		<h4 class="text-<%= to_do.label -%>" style="margin:0px">
+					  			<input type="checkbox" style="display: inline;"> 
 					  			<%= to_do.title %>
 					  		</h4>
 				  		</div>
