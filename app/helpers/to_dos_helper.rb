@@ -28,7 +28,7 @@ module ToDosHelper
 			label = "warning"
 			number = today
 		else
-			label = "primary"
+			label = "success"
 			number = open
 		end
 
