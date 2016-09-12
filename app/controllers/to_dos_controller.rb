@@ -58,7 +58,8 @@ class ToDosController < ApplicationController
       if @to_do.save
         @to_do.__elasticsearch__.index_document
         format.html { redirect_to @to_do, notice: 'To do was successfully created.' }
-        format.json { render :show, status: :created, location: @to_do }
+        format.js
+        format.json { render "to_do", status: :created, to_do: @to_do }
       else
         format.html { render :new }
         format.json { render json: @to_do.errors, status: :unprocessable_entity }
@@ -93,7 +94,7 @@ class ToDosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_to_do
-      @to_do = ToDo.find(params[:id])
+      @to_do = current_user.to_dos.find(params[:id]) # ToDo.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

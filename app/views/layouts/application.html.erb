@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyNotes - <%= yield(:title) || "A tool for the management of notes, documents and to-do's"   %></title>
+    <title>MyNotes -
+      <%=
+				yield(:title) || "MyNotes"   %>
+    </title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -19,7 +22,7 @@
   <% end %>
       <%= yield %>
     </div> <!-- /.workspace -->
-   
+
 
   </body>
 </html>

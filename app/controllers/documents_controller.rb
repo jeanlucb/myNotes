@@ -65,10 +65,10 @@ class DocumentsController < ApplicationController
       if @document.update(document_params)
         if params[:update_files]
           begin
-            @document.file.cache_stored_file! 
-            @document.file.retrieve_from_cache!(@document.file.cache_name) 
-            @document.file.recreate_versions! 
-            @document.save! 
+            @document.file.cache_stored_file!
+            @document.file.retrieve_from_cache!(@document.file.cache_name)
+            @document.file.recreate_versions!
+            @document.save!
           rescue => e
             format.html { render :edit }
             format.json { render json: @document.errors, status: :unprocessable_entity }
@@ -86,10 +86,10 @@ class DocumentsController < ApplicationController
   def update_files
     respond_to do |format|
       begin
-        @document.file.cache_stored_file! 
-        @document.file.retrieve_from_cache!(@document.file.cache_name) 
-        @document.file.recreate_versions! 
-        @document.save! 
+        @document.file.cache_stored_file!
+        @document.file.retrieve_from_cache!(@document.file.cache_name)
+        @document.file.recreate_versions!
+        @document.save!
         format.html { redirect_to @document, notice: 'The files were successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       rescue => e
@@ -113,7 +113,7 @@ class DocumentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_document
-      @document = Document.find(params[:id])
+      @document = current_user.documents.find(params[:id]) # Document.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
